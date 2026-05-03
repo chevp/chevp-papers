@@ -214,7 +214,6 @@
       <span class="crumb"><a href="index.html">← Papers</a></span>
       <nav>
         <a href="https://chevp.github.io/chevp-ai-framework/">framework</a>
-        <a href="https://chevp.github.io/chevp-ai-framework/flow/">lab</a>
         <a href="https://github.com/chevp/chevp-papers">github</a>
       </nav>
     </div>
@@ -229,21 +228,21 @@
         <strong>chevp</strong>
         <span class="dot">·</span> 2026-05-02
         <span class="dot">·</span> 6 min read
-        <span class="dot">·</span> <a href="https://chevp.github.io/chevp-ai-framework/flow/">Companion lab</a>
       </div>
     </header>
 
     <section class="abstract">
       <div class="label">Abstract</div>
       <p>
-        Plans, ADRs, and specs in <em>chevp-ai-framework</em> are currently kept as loose markdown files in
-        <code>context/</code>, identified by §-numbers that change as the document moves between Context,
+        Plans, ADRs, and specs in <em>chevp-ai-framework</em> were originally kept as loose markdown files in
+        <code>context/</code>, identified by §-numbers that changed as the document moved between Context,
         Exploration, and Production. This paper argues that the §-scheme conflates <em>identity</em> with
         <em>position</em>, and proposes a small structural change: a flat ID per plan
-        (<code>FW-01</code>, <code>ADR-007</code>, <code>PROP-014</code>), a folder per plan containing one
-        markdown per phase, and a Docusaurus subsite served at <code>/flow/</code> next to the existing
-        static site. The result is one stable URL per artefact across its lifetime, real navigation, and
-        zero risk to the existing pages.
+        (<code>p-1</code>, <code>p-2</code>, …), a folder per plan containing one markdown per phase, and a
+        Docusaurus subsite (planned to be served at <code>/flow/</code>) next to the existing static site.
+        The result is one stable URL per artefact across its lifetime, real navigation, and zero risk to the
+        existing pages. The structure has since been adopted in <code>context/lab/</code>; the public subsite
+        is not yet published.
       </p>
     </section>
 
@@ -279,7 +278,7 @@
       <h2><span class="num">3.</span>Proposal: Flat IDs, Folder-per-Plan</h2>
       <p>
         Each plan is assigned one flat, monotonically issued ID at creation time
-        (<code>FW-01</code>, <code>FW-02</code>, …). The ID never changes. A plan owns a folder. Inside,
+        (<code>p-1</code>, <code>p-2</code>, …). The ID never changes. A plan owns a folder. Inside,
         one file per phase (<code>context.md</code>, <code>exploration.md</code>, <code>insights.md</code>,
         <code>production.md</code>). Phases that have not happened yet simply don't exist as files.
       </p>
@@ -288,18 +287,17 @@
         <figure class="figure">
 <pre><span class="dir">context/lab/docs/</span>
 ├── intro.md
-<span class="new">├── plans/</span>
-<span class="new">│   ├── active/</span>
-<span class="new">│   │   └── fw-01-lab-bootstrap/</span>     <span class="comment"># the plan = the folder</span>
-<span class="new">│   │       ├── _category_.json</span>
-<span class="new">│   │       ├── context.md</span>            <span class="comment"># phase 1</span>
-<span class="new">│   │       ├── exploration.md</span>        <span class="comment"># phase 2</span>
-<span class="new">│   │       ├── insights.md</span>           <span class="comment"># Learning Loop output</span>
-<span class="new">│   │       └── production.md</span>         <span class="comment"># phase 3</span>
-<span class="new">│   ├── proposals/</span>
-<span class="new">│   └── finished/</span>
-<span class="new">├── decisions/</span>                   <span class="comment"># ADR-NNN, one file each</span>
-<span class="new">└── specs/</span></pre>
+<span class="new">└── plans/</span>
+<span class="new">    ├── p-1-lab-bootstrap/</span>          <span class="comment"># the plan = the folder</span>
+<span class="new">    │   ├── _category_.json</span>
+<span class="new">    │   ├── context.md</span>              <span class="comment"># phase 1</span>
+<span class="new">    │   ├── exploration.md</span>          <span class="comment"># phase 2</span>
+<span class="new">    │   └── insights.md</span>             <span class="comment"># Learning Loop output</span>
+<span class="new">    ├── p-2-site-positioning-and-split/</span>
+<span class="new">    ├── p-3-chevp-flow-cli/</span>
+<span class="new">    ├── p-4-thinking-learning-upgrade/</span>
+<span class="new">    ├── p-5-plugin-and-consumer-rollout/</span>
+<span class="new">    └── p-6-selective-rollback-and-assistant-reframe/</span></pre>
           <figcaption class="figure-cap"><strong>Fig. 1</strong> — Folder-per-plan layout. The plan's identity is the folder name; the phase is the filename.</figcaption>
         </figure>
       </div>
@@ -390,10 +388,17 @@
     </article>
 
     <footer class="colophon">
-      <span>PPR-001 · Set in <em>EB Garamond</em>. Hand-written in <em>chevp-papers</em>.</span>
-      <span><a href="index.html">← back to Papers</a></span>
+      <span>PPR-001 · Set in <em>EB Garamond</em>. &copy; <span id="year">2026</span> Patrice Chevillat.</span>
+      <span>
+        <a href="index.html">← Papers</a> ·
+        <a href="https://chevp.github.io/site-policy/terms.html">Terms</a> ·
+        <a href="https://chevp.github.io/site-policy/privacy.html">Privacy</a> ·
+        <a href="https://chevp.github.io/site-policy/impressum.html">Impressum</a> ·
+        <a href="https://chevp.github.io/site-policy/contact.html">Contact</a>
+      </span>
     </footer>
 
   </main>
+  <script>document.getElementById("year").textContent = new Date().getFullYear();</script>
 </body>
 </html>
